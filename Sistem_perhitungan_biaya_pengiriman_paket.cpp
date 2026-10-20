@@ -44,5 +44,18 @@ double berat_volumetrik = (panjang * lebar * tinggi) / 6000;
 
 double berat_maksimal = max(Berat_aktual, berat_volumetrik);
 double berat_tagihan = ceil(berat_maksimal);
+//  Menentukan Tarif per Kg Berdasarkan Zona Tujuan
+double tarifperKg = 0;
+zona_tujuan = toupper(zona_tujuan);
+if (zona_tujuan == 'A') {
+    tarifperKg = 8000;
+} else if (zona_tujuan == 'B') {
+    tarifperKg = 12000;
+} else if (zona_tujuan == 'C') {
+    tarifperKg = 18000;
+} else {
+    cout << "Zona tujuan tidak valid!" << endl;
+    return 1; // keluar dari program jika zona tidak valid
+}
 return 0;
 }
