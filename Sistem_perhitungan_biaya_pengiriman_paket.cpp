@@ -37,5 +37,12 @@ cout << "jenis Pelayanan (1. Reguler, 2. Prioritas ): ";
 cin >> jenis_pelayanan;
 cout << "Apakah ingin menggunakan asuransi? (Y/N): ";
 cin >> Pilihan_asuransi;
+// perhitungan Berat Volumetrik dan Berat Tagihan
+double berat_volumetrik = (panjang * lebar * tinggi) / 6000;
+
+// Berat tagihan adalah nilai terbesar yang dbulatkan ke atas
+
+double berat_maksimal = max(Berat_aktual, berat_volumetrik);
+double berat_tagihan = ceil(berat_maksimal);
 return 0;
 }
