@@ -57,5 +57,21 @@ if (zona_tujuan == 'A') {
     cout << "Zona tujuan tidak valid!" << endl;
     return 1; // keluar dari program jika zona tidak valid
 }
+// Menghitung biaya asuransi jika dipilih
+double biaya_asuransi = 0;
+if (toupper(Pilihan_asuransi) == 'Y') {
+    biaya_asuransi = 0.01 * nilai_barang;
+    if (biaya_asuransi < 5000) {
+        biaya_asuransi = 5000; // minimum Rp 5.000 
+    }
+}
+// Menghitung total biaya
+cout << "No.paket" << nomor_paket << endl;
+double total_biaya = biaya_dasar + biaya_tambahan + biaya_asuransi;
+cout << "Biaya dasar " << biaya_dasar << " + Biaya tambahan " << biaya_tambahan << " + Biaya asuransi " << biaya_asuransi << endl;
+cout << "Total Biaya: Rp " << total_biaya << endl;
+cout << "tekan Enter untuk keluar....";
+cin.ignore();
+cin.get();
 return 0;
 }
