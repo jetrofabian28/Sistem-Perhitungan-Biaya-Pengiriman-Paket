@@ -1,7 +1,3 @@
-// Studi Kasus 04 - Sistem Perhitungan Biaya Pengiriman Paket
-// Modul B 
-// Penanggung jawab: Aning Dwi Setyowati / 322610002
-
 #include <algorithm>
 #include <cctype>
 #include <cmath>
@@ -10,8 +6,6 @@
 #include <string>
 
 using namespace std;
-
-// Langkah 2: variabel akumulator dan pencacah untuk rekapitulasi (Modul B)
 struct RekapPengiriman {
     int zonaA = 0;
     int zonaB = 0;
@@ -28,7 +22,6 @@ struct RekapPengiriman {
 };
 
 int main() {
-    // Langkah 3: input jumlah paket + validasi
     int jumlah_paket;
     cout << "Masukkan jumlah paket: ";
     if (!(cin >> jumlah_paket) || jumlah_paket <= 0) {
@@ -43,15 +36,18 @@ int main() {
 
     cout << fixed << setprecision(2);
 
-    // Langkah 4: ulangi untuk setiap paket (Modul A)
     for (int i = 1; i <= jumlah_paket; ++i) {
         string nomor_paket;
-        double nilai_barang, berat_aktual, panjang, lebar, tinggi;
-        char zona_tujuan, pilihan_asuransi;
+        double nilai_barang;
+        double berat_aktual;
+        double panjang;
+        double lebar;
+        double tinggi;
+        char zona_tujuan;
+        char pilihan_asuransi;
         int jenis_pelayanan;
 
         cout << "\n=== Data Paket " << i << " ===" << endl;
-
         cout << "Masukkan Nomor Paket: ";
         if (!(cin >> nomor_paket)) {
             cerr << "Nomor paket tidak valid." << endl;
@@ -93,15 +89,19 @@ int main() {
             cerr << "Zona tujuan tidak valid." << endl;
             return 1;
         }
-        zona_tujuan = static_cast<char>(toupper(static_cast<unsigned char>(zona_tujuan)));
+        zona_tujuan = static_cast<char>(
+            toupper(static_cast<unsigned char>(zona_tujuan)));
 
         double tarif_per_kg;
         if (zona_tujuan == 'A') {
             tarif_per_kg = tarifZonaA;
+            ++rekap.zonaA;
         } else if (zona_tujuan == 'B') {
             tarif_per_kg = tarifZonaB;
+            ++rekap.zonaB;
         } else if (zona_tujuan == 'C') {
             tarif_per_kg = tarifZonaC;
+            ++rekap.zonaC;
         } else {
             cerr << "Zona tujuan harus A, B, atau C." << endl;
             return 1;
@@ -119,34 +119,37 @@ int main() {
             cerr << "Pilihan asuransi tidak valid." << endl;
             return 1;
         }
-        pilihan_asuransi = static_cast<char>(toupper(static_cast<unsigned char>(pilihan_asuransi)));
+        pilihan_asuransi = static_cast<char>(
+            toupper(static_cast<unsigned char>(pilihan_asuransi)));
         if (pilihan_asuransi != 'Y' && pilihan_asuransi != 'N') {
             cerr << "Pilihan asuransi harus Y atau N." << endl;
             return 1;
         }
 
-        // Perhitungan biaya
         const double berat_volumetrik = (panjang * lebar * tinggi) / 6000;
-        const bool pakaiVolumetrik = berat_volumetrik > berat_aktual;
-        // 1e-9 mencegah kesalahan pembulatan floating point (mis. 5.0000000001 -> 6)
-        const double berat_tagihan = ceil(max(berat_aktual, berat_volumetrik) - 1e-9);
+        const bool menggunakanBeratVolumetrik = berat_volumetrik > berat_aktual;
+        const double berat_tagihan =
+            ceil(max(berat_aktual, berat_volumetrik));
         const double biaya_dasar = berat_tagihan * tarif_per_kg;
-        const double biaya_tambahan = (jenis_pelayanan == 2) ? 0.40 * biaya_dasar : 0;
+        const double biaya_tambahan =
+            jenis_pelayanan == 2 ? 0.40 * biaya_dasar : 0;
         double biaya_asuransi = 0;
+
         if (pilihan_asuransi == 'Y') {
             biaya_asuransi = max(0.01 * nilai_barang, 5000.0);
         }
-        const double total_biaya = biaya_dasar + biaya_tambahan + biaya_asuransi;
 
-        // Update rekap (dilakukan SETELAH semua input valid)
-        if (zona_tujuan == 'A') ++rekap.zonaA;
-        else if (zona_tujuan == 'B') ++rekap.zonaB;
-        else ++rekap.zonaC;
+        const double total_biaya =
+            biaya_dasar + biaya_tambahan + biaya_asuransi;
 
-        if (jenis_pelayanan == 1) ++rekap.reguler;
-        else ++rekap.prioritas;
-
-        if (pakaiVolumetrik) ++rekap.menggunakanBeratVolumetrik;
+        if (jenis_pelayanan == 1) {
+            ++rekap.reguler;
+        } else {
+            ++rekap.prioritas;
+        }
+        if (menggunakanBeratVolumetrik) {
+            ++rekap.menggunakanBeratVolumetrik;
+        }
 
         rekap.totalBeratAktual += berat_aktual;
         rekap.totalBeratTagihan += berat_tagihan;
@@ -168,7 +171,6 @@ int main() {
         cout << "Total biaya: Rp " << total_biaya << endl;
     }
 
-    // Langkah 5: tampilkan rekapitulasi (Modul B)
     cout << "\n========== REKAPITULASI PENGIRIMAN ==========" << endl;
     cout << "Jumlah paket zona A: " << rekap.zonaA << endl;
     cout << "Jumlah paket zona B: " << rekap.zonaB << endl;
@@ -177,12 +179,13 @@ int main() {
     cout << "Jumlah paket prioritas: " << rekap.prioritas << endl;
     cout << "Total berat aktual: " << rekap.totalBeratAktual << " kg" << endl;
     cout << "Total berat tagihan: " << rekap.totalBeratTagihan << " kg" << endl;
-    cout << "Paket menggunakan berat volumetrik: " << rekap.menggunakanBeratVolumetrik << endl;
+    cout << "Paket menggunakan berat volumetrik: "
+         << rekap.menggunakanBeratVolumetrik << endl;
     cout << "Total asuransi: Rp " << rekap.totalAsuransi << endl;
     cout << "Total pendapatan: Rp " << rekap.totalPendapatan << endl;
-    cout << "Paket dengan biaya tertinggi: " << rekap.nomorPaketBiayaTertinggi
-         << " (Rp " << rekap.biayaTertinggi << ")" << endl;
+    cout << "Paket dengan biaya tertinggi: "
+         << rekap.nomorPaketBiayaTertinggi << " (Rp "
+         << rekap.biayaTertinggi << ")" << endl;
 
-    // Langkah 6: selesai
     return 0;
 }
