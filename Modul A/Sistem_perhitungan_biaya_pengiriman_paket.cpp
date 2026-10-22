@@ -57,7 +57,20 @@ if (zona_tujuan == 'A') {
     cout << "Zona tujuan tidak valid!" << endl;
     return 1; // keluar dari program jika zona tidak valid
 }
+double biaya_dasar = berat_tagihan * tarifperKg;
+
+// Menghitung biaya tambahan berdasarkan jenis pelayanan
+double biaya_tambahan = 0;
+if (jenis_pelayanan == 2) {
+    biaya_tambahan = 0.40 * biaya_dasar;
+}else if (jenis_pelayanan == 1) {
+    biaya_tambahan = 0;
+} else {
+    cout << "Jenis pelayanan tidak valid!" << endl;
+    return 1; // keluar dari program jika jenis pelayanan tidak valid
+}
 // Menghitung biaya asuransi jika dipilih
+
 double biaya_asuransi = 0;
 if (toupper(Pilihan_asuransi) == 'Y') {
     biaya_asuransi = 0.01 * nilai_barang;
