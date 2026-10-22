@@ -4,10 +4,6 @@
 
 ### Gambar Diagram Alir 
 
-![Diagram Alir Flowchart Modul B](gambar/flowchart.svg)
-
-> 💡 **Petunjuk Akses:**
-> - Berkas gambar di atas berformat vektor **SVG** ([gambar/flowchart.svg](gambar/flowchart.svg)) sehingga tidak pecah saat di-zoom atau dicetak.
 > - Garis pada diagram dibuat lurus (siku-siku). Kode Mermaid di bawah memakai `curve: linear` agar garisnya juga lurus; salin ke [mermaid.live](https://mermaid.live) untuk diekspor sebagai **SVG** atau **PNG**.
 
 ---
