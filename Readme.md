@@ -142,14 +142,14 @@ g++ -Wall -Wextra -o main main.cpp
 
 | Dokumen | Isi |
 |---------|-----|
-| [Analisis Masalah](docs/analisis-masalah.md) | Latar belakang, tujuan, aturan, analisis input-proses-output, dan daftar variabel |
-| [Proses Integrasi Program](docs/proses-integrasi-program.md) | Titik temu Modul A dan Modul B, tahapan penggabungan, dan urutan eksekusi |
-| [Pseudocode dan Flowchart Final](docs/pseudocode-flowchart-final.md) | Rancangan akhir program terintegrasi |
-| [Hasil Eksekusi](docs/hasil-eksekusi-terintegrasi.md) | Tampilan menjalankan program pada data valid dan tidak valid |
-| [Tabel Pengujian dan Trace Table](docs/tabel-pengujian-trace-table.md) | 19 kasus uji dan penelusuran nilai variabel |
-| [Daftar Kesalahan dan Perbaikan](docs/daftar-kesalahan-dan-perbaikan.md) | Kesalahan yang ditemukan, penyebab, dan perbaikannya |
-| [Refleksi](docs/refleksi-proyek-uts.md) | Pembagian kerja, tantangan, pembelajaran, dan rencana UAS |
-| [Pernyataan Penggunaan AI](docs/pernyataan-penggunaan-ai.md) | Alat AI yang digunakan dan pemeriksaan hasilnya |
+| Analisis Masalah | Latar belakang, tujuan, aturan, analisis input-proses-output, dan daftar variabel |
+| Proses Integrasi Program | Titik temu Modul A dan Modul B, tahapan penggabungan, dan urutan eksekusi |
+| Pseudocode dan Flowchart Final| Rancangan akhir program terintegrasi |
+| Hasil Eksekusi | Tampilan menjalankan program pada data valid dan tidak valid |
+| Tabel Pengujian dan Trace Table | 19 kasus uji dan penelusuran nilai variabel |
+| Daftar Kesalahan dan Perbaikan | Kesalahan yang ditemukan, penyebab, dan perbaikannya |
+| Refleksi | Pembagian kerja, tantangan, pembelajaran, dan rencana UAS |
+| Pernyataan Penggunaan AI | Alat AI yang digunakan dan pemeriksaan hasilnya |
 
 ---
 
